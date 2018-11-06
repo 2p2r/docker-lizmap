@@ -95,27 +95,27 @@ echo "Check default db exists"
 if [[ ! ${RESULT} == '1' ]]; then
     echo "Create default db ${POSTGRES_DBNAME}"
     su - postgres -c "createdb -O ${POSTGRES_USER} -T template_postgis ${POSTGRES_DBNAME}"
-    if [[ ! -z "POSTGRES_DUMP" ]]; then
+    if [[ ! -z "${POSTGRES_DUMP}" ]]; then
         su - postgres -c " psql $POSTGRES_DBNAME -f /home/default-database.sql "
     fi
 else
     echo "${POSTGRES_DBNAME} db already exists"
 fi
-if [[ ! -z "POSTGRES_DB_AUTH_NAME" ]]; then
+if [[ ! -z "${POSTGRES_DB_AUTH_NAME}" ]]; then
     echo "check POSTGRES_DB_AUTH_NAME exist"
     RESULT=`su - postgres -c "psql -l | grep -w ${POSTGRES_DB_AUTH_NAME} | wc -l"`
     if [[ ! ${RESULT} == '1' ]]; then
-        echo "Create default db ${POSTGRES_DB_AUTH_NAME}"
+        echo "Create db ${POSTGRES_DB_AUTH_NAME}"
         su - postgres -c " createdb -O ${POSTGRES_USER} ${POSTGRES_DB_AUTH_NAME} "
     else
         echo "${POSTGRES_DB_AUTH_NAME} db already exists"
     fi
 fi
-if [[ ! -z "POSTGRES_DB_LOGS_NAME" ]]; then
+if [[ ! -z "${POSTGRES_DB_LOGS_NAME}" ]]; then
     echo "check POSTGRES_DB_LOGS_NAME exist"
     RESULT=`su - postgres -c "psql -l | grep -w ${POSTGRES_DB_LOGS_NAME} | wc -l"`
     if [[ ! ${RESULT} == '1' ]]; then
-        echo "Create default db ${POSTGRES_DB_LOGS_NAME}"
+        echo "Create db ${POSTGRES_DB_LOGS_NAME}"
         su - postgres -c " createdb -O ${POSTGRES_USER} ${POSTGRES_DB_LOGS_NAME} "
     else
         echo "${POSTGRES_DB_LOGS_NAME} db already exists"
