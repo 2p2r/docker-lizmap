@@ -102,6 +102,7 @@ else
     echo "${POSTGRES_DBNAME} db already exists"
 fi
 if [[ ! -z "POSTGRES_DB_AUTH_NAME" ]]; then
+    echo "check POSTGRES_DB_AUTH_NAME exist"
     RESULT=`su - postgres -c "psql -l | grep -w ${POSTGRES_DB_AUTH_NAME} | wc -l"`
     if [[ ! ${RESULT} == '1' ]]; then
         echo "Create default db ${POSTGRES_DB_AUTH_NAME}"
@@ -111,6 +112,7 @@ if [[ ! -z "POSTGRES_DB_AUTH_NAME" ]]; then
     fi
 fi
 if [[ ! -z "POSTGRES_DB_LOGS_NAME" ]]; then
+    echo "check POSTGRES_DB_LOGS_NAME exist"
     RESULT=`su - postgres -c "psql -l | grep -w ${POSTGRES_DB_LOGS_NAME} | wc -l"`
     if [[ ! ${RESULT} == '1' ]]; then
         echo "Create default db ${POSTGRES_DB_LOGS_NAME}"
