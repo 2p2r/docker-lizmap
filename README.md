@@ -1,6 +1,6 @@
 [![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/jancelin/docker-lizmap/master/docker-compose.yml)
 
-from https://github.com/jancelin/docker-lizmap
+fork from https://github.com/jancelin/docker-lizmap allowing to store auth and logs of lizmap web client in postgresql database
 docker-lizmap 
 =============
 
