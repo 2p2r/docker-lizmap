@@ -1,5 +1,6 @@
 [![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/jancelin/docker-lizmap/master/docker-compose.yml)
 
+from https://github.com/jancelin/docker-lizmap
 docker-lizmap 
 =============
 
@@ -16,7 +17,8 @@ With Docker-compose:
 
 * Create a docker-compose.yml and changing the directory path if necessary (home/lizmap/lizmap_project):
 
-https://github.com/jancelin/docker-lizmap/blob/master/docker-compose.yml
+modify the database.env file to configure postgresql user, password, host and a default database + DDL for lizmap, + database names for auth + log of lizmap web client
+docker-compose.yml
 
 * UP
 
