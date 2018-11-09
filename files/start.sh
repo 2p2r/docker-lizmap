@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #generate config file
-sleep 10;
+sleep $LIZMAP_SLEEP;
 VAR="/var/www/websig/lizmap/var/config"
 
 if [ ! -d $VAR ]; then
