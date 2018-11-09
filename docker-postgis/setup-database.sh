@@ -96,6 +96,7 @@ if [[ ! ${RESULT} == '1' ]]; then
     echo "Create default db ${POSTGRES_DBNAME}"
     su - postgres -c "createdb -O ${POSTGRES_USER} -T template_postgis ${POSTGRES_DBNAME}"
     if [[ ! -z "${POSTGRES_DUMP}" ]]; then
+        wget -O /home/default-database.sql ${POSTGRES_DUMP}
         su - postgres -c " psql $POSTGRES_DBNAME -f /home/default-database.sql "
     fi
 else
