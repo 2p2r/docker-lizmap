@@ -9,9 +9,7 @@ if [ ! -d $VAR ]; then
   cp -ar /var/www/websig/lizmap/var_install/*  /var/www/websig/lizmap/var
 fi
 
-
 if [ ! -z "$POSTGRES_DB_AUTH_NAME" ]; then
-
   if [ ! -f /home/files/databases_installed ]; then
     echo "The postgresql databases for log and auth in lizmap are not already installed"
     #replace postgresql variables in profiles.ini.php for log and auth databases
