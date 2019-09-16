@@ -14,27 +14,22 @@ services:
     depends_on:
       - postgis
       - qgiserver
-      - redis
     links:
      - qgiserver:qgiserver
-     - redis:redis
      - postgis:postgis
      
   qgiserver:
-    image: jancelin/qgis-server:2.18LTR
-    restart: on-failure
+    image: kartoza/qgis-server:LTR
+    hostname: qgiserver
     volumes:
+      # Wherever you want to mount your data from
       - project:/home
+    ports:
+      - 8080:80
     expose:
-      - 80
-      
-  redis:
-    image: redis:alpine
-    restart: on-failure
-    volumes:
-      - redis:/data
-    expose:
-      - 6379
+      - 8080
+    env_file:
+      - ./database.env
 
   postgis:
     image: kartoza/postgis:10.0-2.4
@@ -61,30 +56,9 @@ services:
       - 5050:5050
     volumes:
       - pgadmin4:/data
-      
-  portainer:
-    image: portainer/portainer
-    restart: always
-    ports:
-     - 9000:9000
-    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock
-     - portainer:/data
-     
-  cloud:
-    image: coderaiser/cloudcmd
-    restart: always
-    ports:
-      - 8000:8000
-    volumes:
-#      - ~:/root
-      - project:/mnt/fs
      
 volumes:
-   portainer:
    pgadmin4:
    postgres:
-   redis:
    var:
    project:
-
